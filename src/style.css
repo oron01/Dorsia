@@ -12,6 +12,11 @@
     src: url('vinque\ rg.otf');
 }
 
+*::selection {
+    color:black;
+    background-color: white;
+}
+
 body {
     padding: 0;
     margin: 0;
@@ -36,6 +41,8 @@ body > div {
     text-align: center;
     display:flex;
     flex-direction: column;
+    user-select: none;
+    cursor:text;
 }
 
 .banner > h1 {
@@ -73,6 +80,7 @@ body > div {
     border: 1px solid transparent;
     cursor:pointer;
     justify-self:center;
+    user-select: none;
 }
 
 .nav > p:last-of-type {
@@ -117,6 +125,7 @@ background-color: rgb(25, 25, 25);
     padding: 6px;
     margin: 10px;
     cursor: pointer;
+    user-select: none;
 }
 
 .selectedMenuButton, .menusButton:hover {
@@ -244,6 +253,10 @@ background-position: 25% 25%;
     cursor: pointer;
 }
 
+.noDouble {
+    pointer-events: none;
+}
+
 .dialogue {
     height: 0vh;
     width: 0vw;
@@ -263,6 +276,7 @@ background-position: 25% 25%;
     color: black;
     flex-direction: column;
     overflow:auto;
+    user-select: none;
 }
 
 .dialogue > h1 {
@@ -273,6 +287,9 @@ background-position: 25% 25%;
     font-size: 3rem;
     margin: 0.5rem;
     animation: scaleAnimation 1s forwards;
+    user-select: none;
+    cursor: text;
+
 }
 
 .dialogue > h2 {
@@ -283,6 +300,19 @@ background-position: 25% 25%;
     font-size: 2rem;
     margin: 0;
     animation: scaleAnimation 1s forwards;
+    cursor: text;
+}
+
+
+.teammateDescription {
+    color:black;
+    font-weight: 400;
+    letter-spacing: 1px;
+    max-width: clamp(0px,75ch,80vw);
+    white-space: pre-wrap;  
+    animation: scaleAnimation 1s forwards;
+    cursor: text;
+
 }
 
 @keyframes expand {
@@ -327,13 +357,4 @@ background-position: 25% 25%;
     100% {
         transform: scale(1);
     }
-}
-
-.teammateDescription {
-    color:black;
-    font-weight: 400;
-    letter-spacing: 1px;
-    max-width: clamp(0px,75ch,80vw);
-    white-space: pre-wrap;  
-    animation: scaleAnimation 1s forwards;
 }

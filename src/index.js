@@ -160,6 +160,7 @@ let createAbout = () => {
         function createDialogue() {
             let body = document.querySelector("body")
             body.classList = "bodyDuringDialogue"
+            div.classList = "teammateCard noDouble"
             let dialogue = document.createElement("div")
             dialogue.classList = "dialogue" 
             body.appendChild(dialogue)
@@ -179,7 +180,8 @@ let createAbout = () => {
             dialogue.appendChild(teammateDescription)
             closeButton.addEventListener("click",() => {body.removeChild(dialogue)
             body.classList = ""
-        body.removeChild(closeButton)})
+        body.removeChild(closeButton)
+        div.classList = "teammateCard"})
             
         }
         div.addEventListener("click",createDialogue)
