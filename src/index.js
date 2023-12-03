@@ -32,9 +32,9 @@ function navDisplay() {
     let menus = document.createElement("p")
     menus.textContent = "menus"
     menus.classList = "navButton currentNav"
-    let events = document.createElement("p")
-    events.textContent = "events"
-    events.classList = "navButton"
+    let hoursAndLocation = document.createElement("p")
+    hoursAndLocation.textContent = "hoursAndLocation"
+    hoursAndLocation.classList = "navButton"
     let reviews = document.createElement("p")
     reviews.textContent = "reviews"
     reviews.classList = "navButton"
@@ -42,10 +42,10 @@ function navDisplay() {
     reservations.textContent = "Reservations"
     reservations.classList = "navButton"
     mainDisplayObj.nav.appendChild(menus)
-    mainDisplayObj.nav.appendChild(events)
+    mainDisplayObj.nav.appendChild(hoursAndLocation)
     mainDisplayObj.nav.appendChild(reviews)
     mainDisplayObj.nav.appendChild(reservations)
-    return {menus,events,reviews,reservations}
+    return {menus,hoursAndLocation,reviews,reservations}
 }
 
 let cleanMain = () => {
@@ -135,7 +135,7 @@ let informationObject = {
             cleanMain()
             createMenus()
             break;
-        case ("events"):
+        case ("hoursAndLocation"):
             cleanMain()
             break;
         case ("reviews"):
