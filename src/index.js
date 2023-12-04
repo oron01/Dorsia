@@ -77,11 +77,7 @@ let createMenus = () => {
     delicaciesButton.textContent = "Delicacies"
 
     let buttons = [entreesButton,cuisineButton,spiritsButton,delicaciesButton]
-    let menusButtonsHandler = (e) => {selectedMenu = e.currentTarget
-        buttons.forEach((button) => {button.classList = "menusButton"})
-        e.currentTarget.classList = "menusButton selectedMenuButton"
-        selectedMenu = e.currentTarget.textContent
-        menusContent.innerHTML = ""
+    let switchMenu = () => {
         switch (selectedMenu) {
             case "Entrees":
                 createItem("Cilantro Crawfish Gumbo","A tantalizing Cajun serenade, melds the bold zest of cilantro with the sultry dance of crawfish, creating a symphony of flavors that echoes through the bayou.")
@@ -104,7 +100,17 @@ let createMenus = () => {
                 createItem("Caramelized Pecan Parfait","Vanilla Bean Ice Cream combined with Warm Caramel Sauce and Toasted Pecans")
                 createItem("Dark Chocolate Decadence","Flourless Chocolate Cake with Raspberry Coulis and a Dollop of Whipped Cream")
                 createItem("Lemon Infusion Tart","Lemon Curd on Buttery Shortcrust, topped with Zest of Fresh Lemons")
-            }    }
+            }
+    }
+
+    let menusButtonsHandler = (e) => {selectedMenu = e.currentTarget
+        buttons.forEach((button) => {button.classList = "menusButton"})
+        e.currentTarget.classList = "menusButton selectedMenuButton"
+        selectedMenu = e.currentTarget.textContent
+        menusContent.innerHTML = ""
+        switchMenu(selectedMenu)
+    }
+
     buttons.forEach((button) => {menusDiv.appendChild(button)
     button.classList = "menusButton"
     button.addEventListener("click",menusButtonsHandler)})
@@ -120,6 +126,8 @@ let createMenus = () => {
         div.appendChild(p)
 
     }
+    switchMenu(selectedMenu)
+    entreesButton.classList = "menusButton selectedMenuButton"
 }
 
 let createAbout = () => {
@@ -213,7 +221,32 @@ let createAbout = () => {
 }
 
 let createReviews = () => {
-
+    let reviewsContainer = document.createElement("div")
+    mainDisplayObj.main.appendChild(reviewsContainer)
+    reviewsContainer.classList = "reviewsContainer"
+    let createReview = (nameVal,starsCount,reviewTextVal,src) => {
+        let div = document.createElement("div")
+        div.classList = "reviewDiv"
+        let img = document.createElement("img")
+        img.src = src
+        img.classList = "reviewImage"
+        let name = document.createElement("h2")
+        name.textContent = nameVal
+        let reviewText = document.createElement("p")
+        reviewText.textContent = reviewTextVal
+        reviewText.classList = "reviewText"
+        let stars = document.createElement("p")
+        stars.classList = "stars"
+        stars.textContent = "★".repeat(starsCount)
+        reviewsContainer.appendChild(div)
+        div.appendChild(img)
+        div.appendChild(name)
+        div.appendChild(reviewText)
+        div.appendChild(stars)
+    }
+    createReview("Paul Allen",5,"Great sea urchin seviche.", "https://static.wikia.nocookie.net/the-dead-meat/images/5/5d/Paul_Allen.jpg")
+    createReview("Timothy Bryce",5,"God, I hate this place. It's a chick restaurant. Why aren't we at Dorsia?", "https://pbs.twimg.com/profile_images/1634341787/297575_2324427623435_1031953486_2684668_652685917_n_400x400.jpg")
+    createReview("David Van Patten",3,"No good bathroom to do coke in.", "https://i.redd.it/lyh6fz8i72wa1.png")
 }
 
 let informationObject = {
@@ -232,6 +265,7 @@ let informationObject = {
             break;
         case ("reviews"):
             cleanMain()
+            createReviews()
             break;
         case ("Reservations"):
         cleanMain()

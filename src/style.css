@@ -43,6 +43,7 @@ body > div {
     flex-direction: column;
     user-select: none;
     cursor:text;
+    
 }
 
 .banner > h1 {
@@ -66,8 +67,9 @@ body > div {
 }
 
 .nav {
-    width: 60vw;
-    margin: 1.25vh 20vw;
+    /* width: 60vw; */
+    width: clamp(200px,60vw,800px);
+    margin: 1.25vh auto;
     display: grid;
     grid-template: 1fr / 1fr 1fr 1fr 1fr;
     text-align: center;
@@ -358,3 +360,76 @@ background-position: 25% 25%;
         transform: scale(1);
     }
 }
+
+.reviewsContainer {
+    justify-content: center;
+    width: 75vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.reviewDiv {
+    align-self:center;
+    justify-self: center;
+    padding: 5px 10px;
+    text-align: center;
+    display:grid;
+    align-items: center;
+    justify-content: center;
+    grid-template: 1fr 1fr /120px calc(100% - 120px);
+    grid-auto-flow: column;
+    justify-content: center;
+    border: solid white 2px;
+    margin: 1rem 0 0 0;
+    width: clamp(200px,80%,300px);
+    grid-template-areas:
+    "img name"
+    "img text"
+    "img stars";
+    height: 120px;
+    overflow-y: auto;
+
+}
+
+.reviewDiv > h2 {
+    grid-area: name;
+    margin: 0;
+    color: white;
+    grid-column: 2 / 4 ;
+
+}
+
+.reviewImage {
+    grid-area: img;
+    border-radius: 50%;
+    width: 100px;
+    height:100px;
+    object-fit: cover;
+    margin: 0px;
+    margin-left: 0.5rem;
+
+}
+
+.reviewText {
+    grid-area: text;
+    text-align: center;
+    color:white;
+    margin:0px;
+    justify-self: center;
+    word-break:normal;
+    max-width: 55ch;
+    grid-column: 2 / 4 ;
+}
+
+
+.stars {
+    grid-area: stars;
+    font-size: 1rem;
+    color:gold;
+    margin: 0;
+    grid-column: 2 / 4 ;
+}
+
