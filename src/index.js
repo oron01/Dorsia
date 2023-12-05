@@ -293,7 +293,7 @@ let createReservations = () => {
         return {option}
     }
     let first = createFormField("Number of People","Number of people","Nobama","","select")
-    createSelectOption(first.input,"NumberOfPeople","false")
+    createSelectOption(first.input,"Number of people","false")
     createSelectOption(first.input,"2 People",null,"")
     createSelectOption(first.input,"3 People",null,null)
     createSelectOption(first.input,"4 People",null,null)
@@ -309,16 +309,25 @@ let createReservations = () => {
     date.input.value = formattedDate
 
     let time = createFormField("Time","Time","Time","true","select")
+    createSelectOption(time.input,"Time","true",null)
     // createSelectOption(time.input,currentDate.getHours(),null,null)
     // let hourOptions = []
     for (let i = 16 ; i < 24.5; i+= 0.5) {
         let hour = 0
         if (i % 1 == 0) {
-            if (i == currentDate.getHours()+1) {hour = createSelectOption(time.input,i + " : 00",null,"true")}
+            // this if is obsolete i just didn't want to remove the if else formatting, the else is always the one
+            if (false && i == currentDate.getHours()+1) {hour = createSelectOption(time.input,i + " : 00",null,"true")}
             else {hour = createSelectOption(time.input,i + " : 00",null,null)}
         // hourOptions.push(hour)
         }
+        else {if (i !== 20.5) {hour = createSelectOption(time.input,i-0.5 + " : 30",null,null)}
+        else{hour = createSelectOption(time.input,i-0.5 + " : 30",null,"true")}
     }
+}
+    let bookButton = document.createElement("button")
+    bookButton.classList = "bookButton"
+    bookButton.textContent = "Find a Table"
+    reservationsForm.appendChild(bookButton)
     reservationsContainer.appendChild(reservationsForm)
 
 }

@@ -159,7 +159,7 @@ background-color: rgb(25, 25, 25);
 .menusContent > div > p{
     margin:0 auto;
     margin-bottom: 30px;
-    max-width: 75ch;
+    width: clamp(200px,75ch,80vw);
     text-align:center;
 
 }
@@ -457,6 +457,11 @@ background-position: 25% 25%;
     flex-direction: column;
 }
 
+.reservationsForm {
+    display:flex;
+    flex-direction:column;
+}
+
 .reservationsForm > h1 {
     margin: 1rem auto;
     text-align: center;
@@ -475,6 +480,50 @@ background-position: 25% 25%;
     margin: 2.5px;
 }
 
+.formField > label {
+    font-weight:300;
+}
+.formField > span {
+    font-weight: 100;
+}
+
 .formField > input, .formField > select {
     height: 3rem;
+}
+
+.bookButton {
+    all:unset;
+    border: solid black 2px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    border-radius: 10px;
+margin: 0 auto;
+background-color: white;
+font-weight: bold;
+margin-top: 1rem;
+text-align: center;
+justify-self: center;
+align-self: center;
+cursor: pointer;
+
+}
+
+@keyframes resButtonColor{
+    0% {
+        background-color: silver;
+        color: black;
+    }
+    100% {
+        background-color: black;
+        color: silver;
+    }
+}
+
+
+.bookButton:hover {
+    animation: resButtonColor 0.5s forwards;
+}
+
+option, select {
+    cursor:pointer
 }
