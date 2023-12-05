@@ -255,8 +255,10 @@ let createReservations = () => {
     reservationsContainer.classList = "reservationsContainer"
     mainDisplayObj.main.appendChild(reservationsContainer)
     let reservationsForm = document.createElement("form")
+    reservationsForm.classList = "reservationsForm"
     let formHeader = document.createElement("h1")
     formHeader.textContent = "Reservations"
+    reservationsForm.appendChild(formHeader)
     let createFormField = (labelText,placeholder,id,required,inputType) => {
         let div = document.createElement("div")
         div.classList = "formField"
@@ -307,8 +309,16 @@ let createReservations = () => {
     date.input.value = formattedDate
 
     let time = createFormField("Time","Time","Time","true","select")
-    createSelectOption(time.input,currentDate.getHours(),null,null)
-
+    // createSelectOption(time.input,currentDate.getHours(),null,null)
+    // let hourOptions = []
+    for (let i = 16 ; i < 24.5; i+= 0.5) {
+        let hour = 0
+        if (i % 1 == 0) {
+            if (i == currentDate.getHours()+1) {hour = createSelectOption(time.input,i + " : 00",null,"true")}
+            else {hour = createSelectOption(time.input,i + " : 00",null,null)}
+        // hourOptions.push(hour)
+        }
+    }
     reservationsContainer.appendChild(reservationsForm)
 
 }
