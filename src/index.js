@@ -31,21 +31,22 @@ function menusDisplay() {
 function navDisplay() {
     let menus = document.createElement("p")
     menus.textContent = "menus"
-    menus.classList = "navButton currentNav"
+    menus.classList = "navButton"
     let about = document.createElement("p")
     about.textContent = "about"
-    about.classList = "navButton"
+    about.classList = "navButton currentNav"
     let reviews = document.createElement("p")
     reviews.textContent = "reviews"
     reviews.classList = "navButton"
     let reservations = document.createElement("p")
     reservations.textContent = "Reservations"
     reservations.classList = "navButton"
-    mainDisplayObj.nav.appendChild(menus)
+    reservations.id = "reservations"
     mainDisplayObj.nav.appendChild(about)
+    mainDisplayObj.nav.appendChild(menus)
     mainDisplayObj.nav.appendChild(reviews)
     mainDisplayObj.nav.appendChild(reservations)
-    return {menus,about,reviews,reservations}
+    return {about,menus,reviews,reservations}
 }
 
 let cleanMain = () => {
@@ -249,6 +250,69 @@ let createReviews = () => {
     createReview("David Van Patten",3,"No good bathroom to do coke in.", "https://i.redd.it/lyh6fz8i72wa1.png")
 }
 
+let createReservations = () => {
+    let reservationsContainer = document.createElement("div")
+    reservationsContainer.classList = "reservationsContainer"
+    mainDisplayObj.main.appendChild(reservationsContainer)
+    let reservationsForm = document.createElement("form")
+    let formHeader = document.createElement("h1")
+    formHeader.textContent = "Reservations"
+    let createFormField = (labelText,placeholder,id,required,inputType) => {
+        let div = document.createElement("div")
+        div.classList = "formField"
+        let label = document.createElement("label")
+        label.textContent = labelText
+        label.for = id
+        let input = document.createElement(inputType)
+        input.placeholder = placeholder
+        input.id = id
+        if (required == "true") {input.required = true
+        let requiredText = document.createElement("strong")
+        requiredText.classlist = "requiredText"
+        requiredText.textContent = " - Required"
+        label.appendChild(requiredText)}
+        else {
+            let notRequiredText = document.createElement("span")
+            notRequiredText.classlist = "optionalText"
+            notRequiredText.textContent = " - Optional"
+            label.appendChild(notRequiredText)}
+        reservationsForm.appendChild(div)
+        div.appendChild(label)
+        div.appendChild(input)
+        return {div,label,input}
+    }
+    let createSelectOption = (selectElement,optionVal,disabled,selected) => {
+        let option = document.createElement("option")
+        option.value = optionVal
+        option.textContent = optionVal
+        selectElement.appendChild(option)
+        if (disabled !== null) {option.disabled = "true"}
+        if (selected !== null) {option.selected = "true"}
+        return {option}
+    }
+    let first = createFormField("Number of People","Number of people","Nobama","","select")
+    createSelectOption(first.input,"NumberOfPeople","false")
+    createSelectOption(first.input,"2 People",null,"")
+    createSelectOption(first.input,"3 People",null,null)
+    createSelectOption(first.input,"4 People",null,null)
+    createSelectOption(first.input,"5 People",null,null)
+    createSelectOption(first.input,"6 People",null,null)
+    createSelectOption(first.input,"7 People",null,null)
+    createSelectOption(first.input,"8 People",null,null)
+
+    let currentDate = new Date()
+    let date = createFormField("Date","Date","Date","true","input")
+    date.input.type = "date"
+    const formattedDate = currentDate.toISOString().split('T')[0];
+    date.input.value = formattedDate
+
+    let time = createFormField("Time","Time","Time","true","select")
+    createSelectOption(time.input,currentDate.getHours(),null,null)
+
+    reservationsContainer.appendChild(reservationsForm)
+
+}
+
 let informationObject = {
     selectedPage: document.querySelector(".navButton"),
     switchPage(e) {informationObject.selectedPage.classList = "navButton"
@@ -269,6 +333,7 @@ let informationObject = {
             break;
         case ("Reservations"):
         cleanMain()
+        createReservations()
             break;
     }
 }
@@ -277,11 +342,11 @@ let informationObject = {
 let createNavClick = () => {
     let navButtons = document.querySelectorAll(".navButton")
     navButtons.forEach((button) => {button.addEventListener("click",informationObject.switchPage)})
-    createMenus()
+    createAbout()
 }
 
 let mainDisplayObj = mainDisplay()
 let menusDisplayObj = menusDisplay()
 let navDisplayObj = navDisplay()
-informationObject.selectedPage = navDisplayObj.menus
+informationObject.selectedPage = navDisplayObj.about
 createNavClick()

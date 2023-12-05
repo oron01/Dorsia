@@ -95,6 +95,12 @@ body > div {
     border-bottom: 1px solid white !important;
 }
 
+#reservations.currentNav, #reservations:hover {
+    color:black;
+    transition: background-color 2s, color 2s;
+    background-color: white;
+}
+
 .main {
     margin: 0 15vw;
     margin: 0 0;
@@ -433,3 +439,39 @@ background-position: 25% 25%;
     grid-column: 2 / 4 ;
 }
 
+@keyframes reservationsColor{
+    0% {
+        background-color: black;
+    }
+    100% {
+        background-color: silver;
+    }
+}
+
+.reservationsContainer {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    animation: reservationsColor 1s forwards;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.formField {
+    padding:1rem;
+    display:flex;
+    flex-direction: column;
+    text-align: left;
+    width: clamp(200px,60vw,800px);
+    margin: auto;
+}
+
+.formField > * {
+    margin: 2.5px;
+}
+
+.formField > input, .formField > select {
+    height: 3rem;
+}
