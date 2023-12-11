@@ -9,7 +9,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
-  }.
+  },
   "author": "Oron",
   "license": "ISC",
   "devDependencies": {
