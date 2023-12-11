@@ -4,7 +4,8 @@
   "description": "An exclusive dining experience.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update": "git subtree push --prefix dist origin gh-pages"
   },
   "author": "Oron",
   "license": "ISC",
