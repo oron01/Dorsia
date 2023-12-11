@@ -6,7 +6,9 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "update": "git subtree push --prefix dist origin gh-pages"
+    "update": "git subtree push --prefix dist origin gh-pages",
+    "build": "webpack"
+
   },
   "author": "Oron",
   "license": "ISC",
