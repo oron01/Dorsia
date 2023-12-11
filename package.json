@@ -8,12 +8,12 @@
     "deploy": "gh-pages -d build",
     "update": "git subtree push --prefix dist origin gh-pages",
     "build": "webpack"
-
   },
   "author": "Oron",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^6.8.1",
+    "file-loader": "^6.2.0",
     "gh-pages": "^6.1.0",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4",
