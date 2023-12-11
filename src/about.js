@@ -84,6 +84,6 @@ export function createAbout(mainDisplayObj) {
 
     createTeamMember("Patrick Bateman","General Manager","https://media.gq-magazine.co.uk/photos/5e9ee080be258400088d6fc3/1:1/w_1080,h_1080,c_limit/20200421-psycho-04.jpg", dorsiaExperience)
     createTeamMember("Mario Luigitello","Execute Restaurant Chef","https://www.the-yeatman-hotel.com/fotos/gca/chef_212942577763b6a8b28754d.jpg", chefDescription)
-    createTeamMember("Obama","Sommilier","https://images1.penguinrandomhouse.com/author/22627",sommelierDescription)
+    createTeamMember("Obama","Sommilier","./Obama.png",sommelierDescription)
 
 }
