@@ -3,6 +3,7 @@ import {createMenus} from "./menus";
 import { createAbout } from "./about";
 import { createReviews } from "./reviews";
 import { createReservations } from "./reservations";
+import obamaSrc from './Obama.png'
 
 let content = document.querySelector("#content")
 
