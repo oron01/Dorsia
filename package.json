@@ -4,10 +4,6 @@
   "description": "An exclusive dining experience.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "update": "git subtree push --prefix dist origin gh-pages"
-  },
-  "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "update": "git subtree push --prefix dist origin gh-pages"
