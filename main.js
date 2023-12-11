@@ -1,1 +1,0 @@
-content=document.querySelector("#content"),content.innerText="amogus";
